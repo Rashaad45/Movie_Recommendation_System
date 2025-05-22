@@ -112,7 +112,8 @@ def AI(request):
         import google.generativeai as genai
         
         # Configure the API
-        genai.configure(api_key="AIzaSyA96OScR17VpKckBCr-NHDm7J8-v0Ed6Uc")
+        genai.configure(api_key="#")
+        # AIzaSyA96OScR17VpKckBCr-NHDm7J8-v0Ed6Uc
         model = genai.GenerativeModel('gemini-2.0-flash')
         
         # Get the query from the form
