@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+    
+    <!-- Favicon for browser tab -->
+    <link rel="icon" href="{% static 'img/visual-studio-logo-24.png' %}" type="image/png">
+  
+    <!-- Alternative favicon formats for cross-browser support -->
+    <link rel="shortcut icon" href="path/to/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'img/visual-studio-logo-24.png' %}">
+</head>
+<body>
+    <form action="login" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="username"><br>
+        <input type="password" name="password" placeholder="password"><br>
+        <input type="submit">
+    </form>
+
+    <div>
+        {% for message in messages %}
+        <h3> {{message}} </h3>
+        {% endfor %}
+    </div>
+</body>
+</html>

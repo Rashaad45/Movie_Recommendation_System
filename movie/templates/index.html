@@ -1,0 +1,259 @@
+{% load static %}
+{% static "img" as baseURL %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python for AI project</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- Box Icons -->
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Tab logo -->
+    <!-- Favicon for browser tab -->
+    
+
+
+    <!-- Favicon for browser tab -->
+    <link rel="icon" href="{% static 'img/visual-studio-logo-24.png' %}" type="image/png">
+  
+    <!-- Alternative favicon formats for cross-browser support -->
+    <link rel="shortcut icon" href="path/to/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'img/visual-studio-logo-24.png' %}">
+    
+  <!-- Demo styles -->
+</head>
+<body>
+   <!-- navbar-->
+    <header>
+        <!-- Tab logo -->
+        <a href="#" class="logo">
+            <i class='bx bxs-movie'></i> Movies
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <!-- Menu-->
+         <ul class="navbar">
+            <li><a href="#home" class="home-active">Home</a></li>
+            <li><a href="search/AI" target="_blank">AI Assistant</a></li>
+            <li><a href="search/genai">Search</a></li>
+            <li><a href="#movies">Movies</a></li>
+            <li><a href="#coming">Coming</a></li>
+            {% if user.is_authenticated %}
+            <li>Hello, {{user.first_name}}</li>
+            <li><a href="accounts/logout">Sign-out</a></li>
+            {% else %}
+            <li><a href="accounts/register">Register</a></li>
+         </ul>
+         <a href="accounts/login" class="btn">Sign-in</a>
+         {% endif %}
+    </header>
+
+
+    <!--HOME-->
+    <section class="home swiper" id="home">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide container">
+                <img src="{% static 'img/mipost.jpeg' %}" alt="">
+                <div class="home-text">
+                    <h1><br> <br>  </h1>
+                    <a href="#" class="btn">Book Now</a>
+                    <a href="https://www.youtube.com/watch?v=avz06PDqDbM" target="_blank" class="play">
+                        <i class='bx bx-play'></i>
+                    </a>
+                </div>
+            </div>
+            <!-- box 2-->
+            <div class="swiper-slide container">
+                <img src="{% static 'img/prem.jpeg' %}" alt="">
+                <div class="home-text">
+                    
+                    <h1><br> <br> Premalu</h1>
+                    <a href="#" class="btn">Book Now</a>
+                    <a href="https://www.youtube.com/watch?v=rR_2ti4l3nM" target="_blank" class="play">
+                        <i class='bx bx-play'></i>
+                    </a>
+                </div>
+            </div> 
+            <!--box 3-->
+            <div class="swiper-slide container">
+                <img src="{% static 'img/AA.jpeg' %}" alt="">
+                <div class="home-text">
+                    
+                    <h1><br> Pushpa:<br>the Rise </h1>
+                    <a href="#" class="btn">Book Now</a>
+                    <a href="https://www.youtube.com/watch?v=Q1NKMPhP8PY" target="_blank" class="play">
+                        <i class='bx bx-play'></i>
+                    </a>
+                </div>
+            </div>
+            <!-- box4 -->
+            <div class="swiper-slide container">
+                <img src="{% static 'img/malik.jpg' %}" alt="">
+                <div class="home-text">
+                    
+                    <h1><br><br>Malik </h1>
+                    <a href="#" class="btn">Book Now</a>
+                    <a href="https://www.youtube.com/watch?v=41g6MgPkH7E" target="_blank" class="play">
+                        <i class='bx bx-play'></i>
+                    </a>
+                </div>
+            </div>
+                   
+          </div>
+          
+          <div class="swiper-pagination"></div>
+    </section>
+    
+    
+    
+    <!-- movies-->
+    <section class="movies" id="movies">
+        <h2 class="heading">Top Cinema Hits</h2>
+        <!--movies container-->
+        <div class="movies-container">
+            <!--box1-->
+            {% for movie in movies %}
+            <div class="box">
+            <div class="box-img">
+                <img src="{{movie.img.url}}" alt="">
+            </div>
+            <a href="{{movie.link}}" target="_blank">play trailer</a>
+
+            <h3>{{movie.name}}     {{movie.certificate}}</h3>
+            <span>{{movie.duration}} | {{movie.genre}}</span>
+        </div>
+        {% endfor %}
+        
+        </div>
+    </section>
+    <!--comming-->
+    
+    <section class="coming" id="coming">
+        <h2 class="heading">Coming soon</h2>
+        <div class="coming-container swiper">
+            <div class="swiper-wrapper">
+                <!-- Each slide should be a direct child of swiper-wrapper -->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img  src="{% static 'img/upcoming1.jpeg' %}" alt="">
+                    </div>
+                    
+                    <h3>Bhool Chuk Maaf</h3>
+                    <a href="https://www.youtube.com/watch?v=nZEXRZMEd5Y" target="_blank">play trailer</a>
+                </div>
+                <!--box2-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="{% static 'img/upcoming2.jpeg' %}" alt="">
+                    </div>
+                    <h3>Kanappa</h3>
+                    <a href="https://www.youtube.com/watch?v=_R66K_KnNeg" target="_blank">play teaser</a>
+                </div>
+                <!--box3-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="{% static 'img/kantara.jpg' %}" alt="">
+                    </div>
+                    <h3>Kantara : chapter1</h3>
+                    <a href="https://www.youtube.com/watch?v=Frp0zC4643U" target="_blank">play teaser</a>
+                </div>
+                <!--box4-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="{% static 'img/upcoming4.jpeg' %}" alt="">
+                    </div>
+                    <h3>Mission impossible 8</h3>
+                    <a href="https://www.youtube.com/watch?v=fsQgc9pCyDU" target="_blank">play trailer</a>
+                </div>
+                <!--box5-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="{% static 'img/upcoming.webp' %}" alt="">
+                    </div>
+                    <h3>Thudaram</h3>
+                    <a href="https://www.youtube.com/watch?v=HZrYlXuecRg" target="_blank">play trailer</a>
+                </div>
+                <!--box6-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="{% static 'img/upcoming6.jpeg' %}" alt="">
+                    </div>
+                    <h3>Raid 2</h3>
+                    <a href="https://www.youtube.com/watch?v=kQF1gl7nLaU" target="_blank">play trailer</a>
+                </div>
+                <!--box7-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="{% static 'img/upcoming7.jpeg' %}" alt="">
+                    </div>
+                    <h3>Retro</h3>
+                    <a href="https://www.youtube.com/watch?v=yE560j3AK3A" target="_blank">play trailer</a>
+                </div>
+                <!--box8-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="{% static 'img/upcoming8.jpeg' %}" alt="">
+                    </div>
+                    <h3>Sarkeet</h3>
+                    <a href="https://www.youtube.com/watch?v=vFRKz019F7U" target="_blank" >play trailer</a>
+                </div>
+                <!--box9-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="{% static 'img/upcoming9.jpeg' %}" alt="">
+                    </div>
+                    <h3>Thunderbolts*</h3>
+                    <a href="https://www.youtube.com/watch?v=-sAOWhvheK8" target="_blank">play trailer</a>
+                </div>
+                <!--box10-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="{% static 'img/upcoming10.jpeg' %}" alt="">
+                    </div>
+                    <h3>Tourist Family</h3>
+                    <a href="https://www.youtube.com/watch?v=9sH1PoGOydc" target="_blank">play trailer</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--<section class="newsletter" id="newsletter">
+        <h2>Search newsletters <br> with the help of Gemini 2.0</h2>
+        <form action="https://gemini.google.com/search" method="get" >
+            <input type="search" class="text"  placeholder="Search anything" name="q">
+            <input type="submit" value="Search" class="btn" alt="Search">
+            
+            
+        </form>
+    </section>-->
+
+
+    <!--footer-->
+    <section class="footer">
+        <a href="#" class="logo">
+            <i class='bx bxs-movie'></i> Movies
+        </a>
+        <div class="social">
+            <a href="search/form" target="_blank"><i class='bx bx-qr'></i></a>
+            <a href="https://lnkd.in/eD9PBgUi" target="_blank"><i class='bx bxl-linkedin-square'></i></a>
+            <a href="https://github.com/Hemanth-007-creator/PROJECT-FILE.git" target="_blank"><i class='bx bxl-github'></i></a>
+            <a href="https://1drv.ms/p/c/ed3b8e0ed879418b/EfA4LUaSp7FKrr1q9CEZ0CoBl9c1LTTQS9BNAgjQxE4tPA?e=4cCqdK" target="_blank"><i class='bx bx-slideshow'></i></a>
+        </div>
+    </section>
+    <!--copyright-->
+    <div class="copyright">
+        <p>&#169; HMRDYS Project All Right Reserved</p>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- link to custom js-->
+    <script src="{% static 'main.js' %}"></script>
+</body>
+</html>

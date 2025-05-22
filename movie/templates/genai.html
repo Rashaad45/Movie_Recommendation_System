@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python for AI project</title>
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
+    <!-- Favicon for browser tab -->
+    <link rel="icon" href="{% static 'img/visual-studio-logo-24.png' %}" type="image/png">
+  
+    <!-- Alternative favicon formats for cross-browser support -->
+    <link rel="shortcut icon" href="path/to/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'img/visual-studio-logo-24.png' %}">
+</head>
+<body>
+    <div class="search-container">
+        <h2>Find Your Next Favorite</h2>
+        <form action="/search/genai" method="POST">
+            {% csrf_token %}
+            <input type="search" name="num1" id="search" placeholder="Search titles, genres, actors..." required>
+            <input type="submit" value="Search" class="btn">
+        </form>
+        
+        {% if error %}
+            <div class="message-container">
+                <h3 class="error">{{ error }}</h3>
+            </div>
+        {% endif %}
+        
+        {% if recommendations %}
+            <div class="results-container">
+                <h3>Recommended For You</h3>
+                <ul class="movie-list">
+                    {% for movie in recommendations %}
+                        <li class="movie-item">
+                            <div class="movie-title">{{ movie.Title }}</div>
+                            <div class="movie-rating">Rating: {{ movie.Rating }}</div>
+                            
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

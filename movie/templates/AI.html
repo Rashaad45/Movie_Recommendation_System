@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini GenAI Search</title>
+    <link rel="stylesheet" href="{% static 'AI.css' %}">
+    <link rel="icon" href="{% static 'img/visual-studio-logo-24.png' %}" type="image/png">
+    <link rel="shortcut icon" href="{% static 'img/visual-studio-logo-24.png' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'img/visual-studio-logo-24.png' %}">
+</head>
+<body>
+    <div class="search-container">
+        <h2>Search Anything with our<br>Gemini Pro GenAI model</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="search" name="query" id="search" placeholder="Search anything......." required>
+            <button type="submit" class="btn">Search</button>
+        </form>
+        
+        {% if search %}
+            <div class="results-container">
+                <h3>Recommended For You</h3>
+                <ul class="movie-list">
+                    {% for item in search %}
+                        {% if item %}
+                            <li class="movie-item">
+                                <div>{{ item }}</div>                        
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
